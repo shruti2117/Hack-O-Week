@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+        background: #0d1117;
+        color: #c9d1d9;
+        line-height: 1.5;
+    }
+    header {
+        padding: 50px 10%;
+        text-align: center;
+        background: linear-gradient(135deg, #161b22, #0d1117);
+    }
+    header h1 {
+        font-size: 2.6rem;
+        color: #58a6ff;
+    }
+    header p {
+        margin-top: 6px;
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+    section {
+        padding: 35px 10%;
+    }
+    h2 {
+        font-size: 1.7rem;
+        margin-bottom: 12px;
+        color: #58a6ff;
+    }
+    .layout {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 30px;
+    }
+    .about p {
+        margin-bottom: 20px;
+        max-width: 600px;
+    }
+    .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .skill {
+        background: #161b22;
+        padding: 8px 16px;
+        border-radius: 18px;
+        border: 1px solid #30363d;
+        font-size: 0.9rem;
+        transition: 0.3s;
+    }
+    .skill:hover {
+        background: #58a6ff;
+        color: #0d1117;
+    }
+    .projects {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .project {
+        background: #161b22;
+        padding: 18px;
+        border-radius: 12px;
+        border: 1px solid #30363d;
+        transition: transform 0.3s;
+    }
+    .project:hover {
+        transform: translateY(-5px);
+    }
+    .project h3 {
+        font-size: 1.1rem;
+        margin-bottom: 6px;
+    }
+    .contact {
+        text-align: center;
+        padding-top: 30px;
+    }
+    .contact a {
+        margin: 6px;
+        padding: 10px 24px;
+        background: #58a6ff;
+        color: #0d1117;
+        text-decoration: none;
+        border-radius: 24px;
+        font-weight: bold;
+        font-size: 0.95rem;
+        transition: 0.3s;
+    }
+    .contact a:hover {
+        background: white;
+    }
+    footer {
+        text-align: center;
+        padding: 15px;
+        border-top: 1px solid #30363d;
+        opacity: 0.7;
+        font-size: 0.9rem;
+    }
+    @media (max-width: 800px) {
+        .layout {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+</head>
+<body>
+<header>
+    <h1>Shruti</h1>
+    <p>Student • Aspiring Developer • Tech Enthusiast</p>
+</header>
+<section>
+    <div class="layout">
+        <!-- Left -->
+        <div>
+            <div class="about">
+                <h2>About Me</h2>
+                <p>
+                    Passionate student exploring programming and web development.
+                    I enjoy building projects and improving my skills.
+                </p>
+            </div>
+            <div>
+                <h2>Skills</h2>
+                <div class="skills">
+                    <div class="skill">HTML</div>
+                    <div class="skill">CSS</div>
+                    <div class="skill">C</div>
+                    <div class="skill">C++</div>
+                    <div class="skill">Python</div>
+                    <div class="skill">Java</div>
+                </div>
+            </div>
+        </div>
+        <!-- Right -->
+        <div>
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project">
+                    <h3>Portfolio Website</h3>
+                    <p>Personal website using HTML & CSS.</p>
+                </div>
+                <div class="project">
+                    <h3>Palindrome Checker</h3>
+                    <p>C program to check palindrome strings.</p>
+                </div>
+                <div class="project">
+                    <h3>Student Management System</h3>
+                    <p>Basic system to manage student records.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="contact">
+    <h2>Contact</h2>
+    <a href="mailto:samshruti3912@gmail.com">Email</a>
+    <a href="#">LinkedIn</a>
+</section>
+</body>
+</html>
