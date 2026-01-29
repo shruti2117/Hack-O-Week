@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Enthusia 5.0 | Registration</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* VIBRANT FEST BACKGROUND */
+body {
+    min-height: 100vh;
+    background: linear-gradient(
+        135deg,
+        #ff512f,
+        #dd2476,
+        #7f00ff,
+        #00c6ff
+    );
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    max-width: 950px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 40px;
+    color: #fff;
+    box-shadow: 0 25px 45px rgba(0,0,0,0.4);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 38px;
+    font-weight: 600;
+}
+
+header h2 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+header p {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-top: 8px;
+}
+
+.section-title {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    border-left: 5px solid #ffb347;
+    padding-left: 10px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+textarea {
+    resize: none;
+    height: 90px;
+}
+
+/* RADIO & CHECKBOX */
+.option-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.option-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: #ffb347;
+    cursor: pointer;
+}
+
+/* SUBMIT BUTTON */
+button {
+    grid-column: span 2;
+    padding: 15px;
+    background: linear-gradient(135deg, #ff512f, #f09819);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+    .full-width {
+        grid-column: span 1;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <h1>ENTHUSIA 5.0</h1>
+    <h2>Symbiosis Institute of Technology, Nagpur</h2>
+    <p>Annual Fest | Sports • Cultural Programs • Hackathons</p>
+</header>
+
+<form>
+
+<!-- STUDENT DETAILS -->
+<div class="section-title full-width">Student Details</div>
+
+<div>
+    <label>Full Name</label>
+    <input type="text" required>
+</div>
+
+<div>
+    <label>PRN</label>
+    <input type="text" required>
+</div>
+
+<div>
+    <label>Semester</label>
+    <input type="text" required>
+</div>
+
+<div>
+    <label>Section</label>
+    <input type="text" required>
+</div>
+
+<div>
+    <label>Contact Number</label>
+    <input type="tel" required>
+</div>
+
+<div>
+    <label>College Email ID</label>
+    <input type="email" placeholder="name@sitnagpur.edu.in" required>
+</div>
+
+<!-- MAIN CATEGORY -->
+<div class="section-title full-width">Select Main Category</div>
+<div class="option-group full-width">
+    <label><input type="radio" name="category"> Sports</label>
+    <label><input type="radio" name="category"> Cultural Programs</label>
+    <label><input type="radio" name="category"> Hackathons</label>
+</div>
+
+<!-- SPORTS -->
+<div class="section-title full-width">🏅 Sports Events</div>
+<div class="option-group full-width">
+    <label><input type="checkbox"> Cricket</label>
+    <label><input type="checkbox"> Football</label>
+    <label><input type="checkbox"> Basketball</label>
+    <label><input type="checkbox"> Volleyball</label>
+    <label><input type="checkbox"> Badminton</label>
+</div>
+
+<div class="full-width">
+    <label>Team Details</label>
+    <textarea placeholder="Team name and members"></textarea>
+</div>
+
+<!-- CULTURAL -->
+<div class="section-title full-width">🎭 Cultural Programs</div>
+<div class="option-group full-width">
+    <label><input type="checkbox"> Solo Dance</label>
+    <label><input type="checkbox"> Group Dance</label>
+    <label><input type="checkbox"> Singing</label>
+    <label><input type="checkbox"> Drama / Skit</label>
+    <label><input type="checkbox"> Fashion Show</label>
+</div>
+
+<div class="full-width">
+    <label>Performance Details</label>
+    <textarea placeholder="Theme, duration, group size"></textarea>
+</div>
+
+<!-- HACKATHON -->
+<div class="section-title full-width">💻 Hackathons</div>
+<div class="option-group full-width">
+    <label><input type="checkbox"> 24-Hour Hackathon</label>
+    <label><input type="checkbox"> Ideathon</label>
+    <label><input type="checkbox"> AI / ML Challenge</label>
+    <label><input type="checkbox"> Web/App Development</label>
+</div>
+
+<div class="full-width">
+    <label>Idea / Problem Statement</label>
+    <textarea placeholder="Brief idea or domain"></textarea>
+</div>
+
+<button type="submit">Register for Enthusia 5.0 🚀</button>
+
+</form>
+
+<footer>
+    © 2026 Symbiosis Institute of Technology, Nagpur | Enthusia 5.0
+</footer>
+
+</div>
+
+</body>
+</html>
