@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ROYALS | Royal Dining</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+
+    
+    background: url("bg.jpeg") no-repeat center center fixed;
+    background-size: cover;
+
+    
+    position: relative;
+}
+
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.75);
+    z-index: -1;
+}
+
+
+header {
+    text-align: center;
+    padding: 25px 15px;
+}
+
+header img {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 60px;
+    letter-spacing: 6px;
+    margin: 0;
+    color: #222;
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 15px;
+    color: #444;
+}
+
+
+marquee {
+    background: transparent;
+    color: #222;
+    font-weight: 500;
+    padding: 8px;
+    font-size: 14px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.menu-grid {
+    max-width: 1200px;
+    margin: 25px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.section {
+    background: rgba(255,255,255,0.85);
+    padding: 18px 22px;
+    border-radius: 14px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #222;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 6px;
+    margin-bottom: 12px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 16px;
+    border-bottom: 1px dashed #ccc;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+.price {
+    color: #444;
+    font-weight: 500;
+}
+
+
+.info {
+    max-width: 1200px;
+    margin: 20px auto 30px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.info div {
+    background: rgba(255,255,255,0.85);
+    padding: 18px;
+    border-radius: 14px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.info h3 {
+    font-family: 'Playfair Display', serif;
+    color: #222;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+
+footer {
+    text-align: center;
+    font-size: 13px;
+    padding: 12px;
+    color: #444;
+    border-top: 1px solid #ccc;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <!-- Logo -->
+    <img src="logo.jpeg" alt="ROYALS Logo">
+
+    <h1>BRAND ROYALS</h1>
+    <p>A Lavish Hotel • Regal Indian Cuisine</p>
+</header>
+
+<marquee>
+    Where Kings Once Dined • Experience Royal Flavours • Elegance on Every Plate
+</marquee>
+
+<div class="menu-grid">
+
+    <div class="section">
+        <h2>👑 Vegetarian</h2>
+        <ul>
+            <li><span>Shahi Paneer</span><span class="price">₹420</span></li>
+            <li><span>Dum Aloo Banarasi</span><span class="price">₹380</span></li>
+            <li><span>Makhmali Paneer</span><span class="price">₹440</span></li>
+            <li><span>Khoya Matar Makhana</span><span class="price">₹460</span></li>
+            <li><span>Paneer Korma</span><span class="price">₹430</span></li>
+            <li><span>Kashmiri Dum Aloo</span><span class="price">₹390</span></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🍖 Non-Vegetarian</h2>
+        <ul>
+            <li><span>Chicken Korma</span><span class="price">₹520</span></li>
+            <li><span>Chicken Changezi</span><span class="price">₹540</span></li>
+            <li><span>Biryani (Awadhi / Hyderabadi / Mughlai)</span><span class="price">₹480</span></li>
+            <li><span>Galouti Kebab</span><span class="price">₹560</span></li>
+            <li><span>Murgh Musallam</span><span class="price">₹620</span></li>
+            <li><span>Butter Chicken</span><span class="price">₹550</span></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🍬 Desserts</h2>
+        <ul>
+            <li><span>Shahi Tukda</span><span class="price">₹220</span></li>
+            <li><span>Phirni</span><span class="price">₹200</span></li>
+            <li><span>Sheer Khurma</span><span class="price">₹240</span></li>
+            <li><span>Rabri</span><span class="price">₹230</span></li>
+            <li><span>Malpua with Rabri</span><span class="price">₹260</span></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🥤 Beverages</h2>
+        <ul>
+            <li><span>Shahi Thandai</span><span class="price">₹180</span></li>
+            <li><span>Kesar Milk</span><span class="price">₹170</span></li>
+            <li><span>Badam Milk</span><span class="price">₹160</span></li>
+            <li><span>Saffron Sharbat</span><span class="price">₹150</span></li>
+            <li><span>Rose Sharbat</span><span class="price">₹140</span></li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="info">
+    <div>
+        <h3>📍 Address</h3>
+        <p>Laxmi Nagar Near Satvik Mall , Mankapur<br>Nagpur • Maharashtra</p>
+    </div>
+
+    <div>
+        <h3>📞 Contact</h3>
+        <p>+91-80504 80504<br>info@royals.com</p>
+    </div>
+
+    <div>
+        <h3>🎉 Offers</h3>
+        <p>Royal Buffets<br>Festive Menus<br>Private Banquets</p>
+    </div>
+</div>
+
+<footer>
+    © 2026 ROYALS • A Royal Affair in Every Bite
+</footer>
+
+</body>
+</html>
