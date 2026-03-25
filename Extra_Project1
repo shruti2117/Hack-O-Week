@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hack-O-Week Special Request</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        overflow: hidden;
+        color: white;
+        text-align: center;
+    }
+
+    .container {
+        background: rgba(255,255,255,0.1);
+        padding: 40px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 25px rgba(0,0,0,0.3);
+        width: 90%;
+        max-width: 600px;
+        position: relative;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    button {
+        padding: 12px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        margin: 10px;
+        transition: 0.3s ease;
+        position: relative;
+    }
+
+    #yesBtn {
+        background: #00e676;
+        color: black;
+    }
+
+    #yesBtn:hover {
+        transform: scale(1.1);
+        background: #00c853;
+    }
+
+    #noBtn {
+        background: #ff5252;
+        color: white;
+        position: absolute;
+    }
+
+    #thankYou {
+        display: none;
+        font-size: 24px;
+        margin-top: 20px;
+        animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🙏 Sir please give our group full marks in all Hack-O-Week sessions 🙏</h1>
+
+    <button id="yesBtn">Yes </button>
+    <button id="noBtn">No </button>
+
+    <div id="thankYou">🎉 Thank You Sir! You are the Best! 🎉</div>
+</div>
+
+<script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const thankYou = document.getElementById("thankYou");
+
+    yesBtn.addEventListener("click", function() {
+        thankYou.style.display = "block";
+        yesBtn.style.display = "none";
+        noBtn.style.display = "none";
+    });
+
+  
+    noBtn.addEventListener("mouseover", function() {
+        const container = document.querySelector(".container");
+        const maxX = container.offsetWidth - noBtn.offsetWidth;
+        const maxY = container.offsetHeight - noBtn.offsetHeight;
+
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
+
+        noBtn.style.left = randomX + "px";
+        noBtn.style.top = randomY + "px";
+    });
+</script>
+
+</body>
+</html>
