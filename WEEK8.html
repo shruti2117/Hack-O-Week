@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nature Gallery</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* ❄️ Snowfall Background */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1483664852095-d6cc6870702d') no-repeat center/cover;
+    z-index: -2;
+}
+
+/* 🌫️ Blur Layer */
+body::after {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.3);
+    z-index: -1;
+}
+
+/* Title */
+h1 {
+    text-align: center;
+    padding: 15px;
+}
+
+/* Gallery */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.gallery img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    backdrop-filter: blur(15px);
+}
+
+.lightbox img {
+    max-width: 95%;
+    max-height: 95%;
+    border-radius: 10px;
+}
+
+/* Controls */
+.close, .prev, .next {
+    position: absolute;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.close { top: 20px; right: 30px; }
+.prev { left: 30px; top: 50%; transform: translateY(-50%); }
+.next { right: 30px; top: 50%; transform: translateY(-50%); }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+    .gallery { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>❄️ Snow Nature Gallery</h1>
+
+<div class="gallery">
+    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+    <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb">
+    <img src="https://images.unsplash.com/photo-1493244040629-496f6d136cc3">
+    <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9">
+    <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429">
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <span class="close">&times;</span>
+    <span class="prev">&#10094;</span>
+    <img id="lightbox-img">
+    <span class="next">&#10095;</span>
+</div>
+
+<script>
+const images = document.querySelectorAll(".gallery img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+let currentIndex = 0;
+
+function showImage(index) {
+    currentIndex = index;
+    lightbox.style.display = "flex";
+    lightboxImg.src = images[index].src;
+}
+
+images.forEach((img, index) => {
+    img.addEventListener("click", () => showImage(index));
+});
+
+document.querySelector(".close").onclick = () => {
+    lightbox.style.display = "none";
+};
+
+document.querySelector(".next").onclick = () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+};
+
+document.querySelector(".prev").onclick = () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+};
+
+/* Swipe */
+let startX = 0;
+
+lightbox.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+});
+
+lightbox.addEventListener("touchend", e => {
+    let endX = e.changedTouches[0].clientX;
+
+    if (startX - endX > 50) {
+        document.querySelector(".next").click();
+    } else if (endX - startX > 50) {
+        document.querySelector(".prev").click();
+    }
+});
+</script>
+
+</body>
+</html>
