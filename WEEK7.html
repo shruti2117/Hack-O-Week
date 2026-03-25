@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>TO-DO LIST</title>
+
+<style>
+
+/* Background */
+
+body{
+font-family: Arial;
+margin:0;
+padding:40px;
+text-align:center;
+
+background-image:
+linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)),
+url("https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b");
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+color:white;
+}
+
+h1{
+font-size:42px;
+margin-bottom:40px;
+}
+
+/* Layout */
+
+.container{
+display:flex;
+justify-content:center;
+gap:60px;
+flex-wrap:wrap;
+}
+
+/* Calendar box */
+
+.calendar-box{
+
+background:white;
+color:black;
+
+padding:30px;
+
+width:360px;
+
+border-radius:12px;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+
+position:relative;
+
+}
+
+/* Wall calendar rings */
+
+.calendar-box::before,
+.calendar-box::after{
+
+content:"";
+width:20px;
+height:20px;
+
+background:#444;
+
+border-radius:50%;
+
+position:absolute;
+top:-10px;
+
+}
+
+.calendar-box::before{
+left:80px;
+}
+
+.calendar-box::after{
+right:80px;
+}
+
+/* Calendar header */
+
+.calendar-header{
+font-size:22px;
+font-weight:bold;
+margin-bottom:20px;
+}
+
+/* Calendar grid */
+
+.calendar{
+
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:5px;
+
+}
+
+.day{
+
+padding:10px;
+background:#f3f3f3;
+border-radius:6px;
+
+cursor:pointer;
+
+}
+
+.day:hover{
+background:#ffd54f;
+}
+
+/* Todo box */
+
+.todo-box{
+
+background:white;
+color:black;
+
+padding:30px;
+
+width:420px;
+
+border-radius:12px;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+
+}
+
+/* Inputs */
+
+input{
+padding:12px;
+margin:10px;
+width:90%;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+/* Button */
+
+button{
+
+padding:12px 18px;
+border:none;
+
+background:linear-gradient(45deg,#ff9a9e,#fad0c4,#a1c4fd);
+
+border-radius:8px;
+
+cursor:pointer;
+font-weight:bold;
+
+}
+
+button:hover{
+background:linear-gradient(45deg,#fbc2eb,#a6c1ee);
+}
+
+/* Tasks */
+
+li{
+
+list-style:none;
+
+background:linear-gradient(45deg,#fdfcfb,#e2d1c3);
+
+margin:10px;
+padding:12px;
+
+border-radius:8px;
+
+}
+
+.delete{
+
+background:#ff5c5c;
+color:white;
+margin-left:10px;
+
+}
+
+/* Notification */
+
+#notification{
+
+position:fixed;
+bottom:20px;
+right:20px;
+
+background:linear-gradient(45deg,#f6d365,#fda085);
+
+padding:18px;
+
+border-radius:10px;
+
+display:none;
+
+box-shadow:0 5px 10px rgba(0,0,0,0.4);
+
+color:black;
+font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<h1>📋 TO-DO LIST</h1>
+
+<div class="container">
+
+<!-- Calendar -->
+
+<div class="calendar-box">
+
+<div class="calendar-header">
+📅 Select Date
+</div>
+
+<div class="calendar" id="calendar"></div>
+
+<br>
+
+<label>Select Time</label><br>
+<input type="time" id="time">
+
+</div>
+
+
+<!-- Todo -->
+
+<div class="todo-box">
+
+<h2>📝 Tasks</h2>
+
+<input type="text" id="taskInput" placeholder="Enter a task">
+
+<button onclick="addTask()">Add Task</button>
+
+<ul id="taskList"></ul>
+
+</div>
+
+</div>
+
+<div id="notification"></div>
+
+
+<script>
+
+const calendar = document.getElementById("calendar")
+const taskList = document.getElementById("taskList")
+const notification = document.getElementById("notification")
+
+let selectedDate=""
+let tasks = JSON.parse(localStorage.getItem("tasks")) || []
+
+/* Create calendar days */
+
+for(let i=1;i<=31;i++){
+
+let day=document.createElement("div")
+day.className="day"
+day.innerText=i
+
+day.onclick=()=>{
+
+selectedDate="2026-03-"+String(i).padStart(2,'0')
+
+document.querySelectorAll(".day").forEach(d=>d.style.background="#f3f3f3")
+
+day.style.background="#ffd54f"
+
+}
+
+calendar.appendChild(day)
+
+}
+
+/* Save */
+
+function saveTasks(){
+localStorage.setItem("tasks",JSON.stringify(tasks))
+}
+
+/* Render tasks */
+
+function renderTasks(){
+
+taskList.innerHTML=""
+
+tasks.forEach((task,index)=>{
+
+let li=document.createElement("li")
+
+li.innerHTML=`
+<b>${task.text}</b><br>
+📅 ${task.date} ⏰ ${task.time}
+<button class="delete" onclick="deleteTask(${index})">Delete</button>
+`
+
+taskList.appendChild(li)
+
+checkReminder(task)
+
+})
+
+}
+
+/* Add task */
+
+function addTask(){
+
+let text=document.getElementById("taskInput").value
+let time=document.getElementById("time").value
+
+if(text=="" || selectedDate=="" || time==""){
+
+alert("Select date, time and task")
+return
+
+}
+
+let task={text,date:selectedDate,time}
+
+tasks.push(task)
+
+saveTasks()
+
+renderTasks()
+
+document.getElementById("taskInput").value=""
+
+}
+
+/* Delete */
+
+function deleteTask(index){
+
+tasks.splice(index,1)
+
+saveTasks()
+
+renderTasks()
+
+}
+
+/* Reminder */
+
+function checkReminder(task){
+
+let now=new Date()
+
+let taskTime=new Date(task.date+" "+task.time)
+
+let diff=taskTime-now
+
+if(diff>0){
+
+setTimeout(()=>{
+
+notification.style.display="block"
+notification.innerText="⏰ Reminder: "+task.text
+
+setTimeout(()=>{
+notification.style.display="none"
+},4000)
+
+},diff)
+
+}
+
+}
+
+renderTasks()
+
+</script>
+
+
+</body>
+</html>
